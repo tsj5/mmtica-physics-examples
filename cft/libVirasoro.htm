@@ -1,0 +1,649 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN"
+        "HTMLFiles/xhtml-math11-f.dtd">
+
+<!-- Created with the Wolfram Language : www.wolfram.com -->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <title>
+  libVirasoro
+ </title>
+ <link href="HTMLFiles/libVirasoro.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<p class="Section">
+ General-purpose
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_1.gif" alt="libVirasoro_1.gif" width="266" height="102" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_2.png" alt="libVirasoro_2.png" width="346" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_3.png" alt="libVirasoro_3.png" width="319" height="102" style="vertical-align:middle" />
+</p>
+
+<p class="Section">
+ General non-commutative stuff
+</p>
+
+
+
+<p class="Text">
+ Convention: any object matching the pattern op (defined as needed) is noncommutative.
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_4.gif" alt="libVirasoro_4.gif" width="613" height="144" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_5.gif" alt="libVirasoro_5.gif" width="915" height="207" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_6.gif" alt="libVirasoro_6.gif" width="598" height="144" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_7.gif" alt="libVirasoro_7.gif" width="474" height="39" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_8.gif" alt="libVirasoro_8.gif" width="490" height="417" style="vertical-align:middle" />
+</p>
+
+<p class="Subsubsection">
+ Test
+</p>
+
+
+
+<p class="Text">
+ Notes: factorScalars1 does all the work, operating with a single NonCommutativeMultiply subexpression. First we find all the factors in the NCM that actually contain a noncommutative operator (ie, some sub-part matches the pattern op), in the list ncms. We extract any scalar factors multiplying the noncomm. factors in ncms by extracting the actual noncommutative operators (the Cases[] statement in the last line) and then just dividing ncms by this, entrywise (NB, don&rsquo;t check that the term is well-formed, ie that there are no more than one noncomm. op per factor of the NCM). Middle lines are just putting this all back together.
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_9.gif" alt="libVirasoro_9.gif" width="583" height="228" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_10.png" alt="libVirasoro_10.png" width="390" height="34" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_11.png" alt="libVirasoro_11.png" width="253" height="34" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_12.png" alt="libVirasoro_12.png" width="216" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_13.png" alt="libVirasoro_13.png" width="95" height="34" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_14.png" alt="libVirasoro_14.png" width="140" height="34" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_15.png" alt="libVirasoro_15.png" width="402" height="39" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_16.png" alt="libVirasoro_16.png" width="402" height="39" style="vertical-align:middle" />
+</p>
+
+<p class="Subsubsection">
+ end test
+</p>
+
+
+
+<p class="Subsubsection">
+ unused junk
+</p>
+
+
+
+<p class="Subsubsection">
+ end junk
+</p>
+
+
+
+<p class="Subsubsection">
+ test
+</p>
+
+
+
+<p class="Subsubsection">
+ end test
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_17.gif" alt="libVirasoro_17.gif" width="525" height="375" style="vertical-align:middle" />
+</p>
+
+<p class="Subsubsection">
+ Test
+</p>
+
+
+
+<p class="Subsubsection">
+ end test
+</p>
+
+
+
+<p class="Text">
+ normalOrder assumes its input has been expanded
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_18.gif" alt="libVirasoro_18.gif" width="550" height="942" style="vertical-align:middle" />
+</p>
+
+<p class="Subsubsection">
+ Test1 -- choice of permutations
+</p>
+
+
+
+<p class="Subsubsection">
+ test2
+</p>
+
+
+
+<p class="Subsubsection">
+ end test
+</p>
+
+
+
+<p class="Section">
+ All current algebras
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_19.gif" alt="libVirasoro_19.gif" width="420" height="228" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_20.png" alt="libVirasoro_20.png" width="554" height="123" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_21.png" alt="libVirasoro_21.png" width="540" height="102" style="vertical-align:middle" />
+</p>
+
+<p class="Section">
+ Virasoro algebra
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_22.gif" alt="libVirasoro_22.gif" width="613" height="186" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_23.gif" alt="libVirasoro_23.gif" width="390" height="144" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_24.gif" alt="libVirasoro_24.gif" width="282" height="81" style="vertical-align:middle" />
+</p>
+
+<p class="Subsection">
+ parameterizations
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_25.gif" alt="libVirasoro_25.gif" width="483" height="102" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ Vir minimal models with r&lt;pp; s&lt;p; p&gt;pp:
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_26.gif" alt="libVirasoro_26.gif" width="554" height="123" style="vertical-align:middle" />
+</p>
+
+<p class="Section">
+ Virasoro singular vectors, following BFIZ
+</p>
+
+
+
+<p class="Text">
+ Yellow book eq (8.34): Benoit-St. Aubin formula for sing vects of V (r,1)
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_27.gif" alt="libVirasoro_27.gif" width="478" height="144" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_28.png" alt="libVirasoro_28.png" width="210" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_29.png" alt="libVirasoro_29.png" width="711" height="41" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ yellow book formulas 8.170: action of L[-r]
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_30.gif" alt="libVirasoro_30.gif" width="405" height="144" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ below, &gamma; is supposed to be the non-integer powers of z. 
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_31.gif" alt="libVirasoro_31.gif" width="365" height="270" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_32.gif" alt="libVirasoro_32.gif" width="566" height="732" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_33.png" alt="libVirasoro_33.png" width="152" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_34.png" alt="libVirasoro_34.png" width="140" height="34" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_35.png" alt="libVirasoro_35.png" width="152" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_36.png" alt="libVirasoro_36.png" width="151" height="34" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_37.png" alt="libVirasoro_37.png" width="152" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_38.png" alt="libVirasoro_38.png" width="592" height="86" style="vertical-align:middle" />
+</p>
+
+<p class="Subsubsection">
+ test
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_39.gif" alt="libVirasoro_39.gif" width="468" height="81" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_40.png" alt="libVirasoro_40.png" width="78" height="34" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_41.png" alt="libVirasoro_41.png" width="51" height="33" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_42.gif" alt="libVirasoro_42.gif" width="435" height="39" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_43.png" alt="libVirasoro_43.png" width="462" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_44.png" alt="libVirasoro_44.png" width="618" height="78" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_45.gif" alt="libVirasoro_45.gif" width="310" height="39" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_46.png" alt="libVirasoro_46.png" width="551" height="39" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_47.png" alt="libVirasoro_47.png" width="399" height="41" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_48.png" alt="libVirasoro_48.png" width="533" height="81" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_49.png" alt="libVirasoro_49.png" width="710" height="1394" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_50.png" alt="libVirasoro_50.png" width="293" height="123" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_51.png" alt="libVirasoro_51.png" width="696" height="478" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_52.gif" alt="libVirasoro_52.gif" width="250" height="39" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_53.png" alt="libVirasoro_53.png" width="8" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_54.png" alt="libVirasoro_54.png" width="8" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_55.gif" alt="libVirasoro_55.gif" width="234" height="39" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_56.png" alt="libVirasoro_56.png" width="32" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_57.png" alt="libVirasoro_57.png" width="597" height="133" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_58.gif" alt="libVirasoro_58.gif" width="313" height="165" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_59.png" alt="libVirasoro_59.png" width="169" height="34" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_60.png" alt="libVirasoro_60.png" width="690" height="714" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_61.png" alt="libVirasoro_61.png" width="313" height="60" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_62.png" alt="libVirasoro_62.png" width="495" height="39" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_63.png" alt="libVirasoro_63.png" width="23" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_64.png" alt="libVirasoro_64.png" width="250" height="19" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_65.png" alt="libVirasoro_65.png" width="313" height="60" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_66.png" alt="libVirasoro_66.png" width="401" height="35" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_67.png" alt="libVirasoro_67.png" width="271" height="102" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_68.png" alt="libVirasoro_68.png" width="706" height="1253" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_69.png" alt="libVirasoro_69.png" width="71" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_70.gif" alt="libVirasoro_70.gif" width="343" height="123" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_71.png" alt="libVirasoro_71.png" width="336" height="20" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_72.png" alt="libVirasoro_72.png" width="153" height="34" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_73.png" alt="libVirasoro_73.png" width="169" height="34" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_74.png" alt="libVirasoro_74.png" width="343" height="81" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_75.png" alt="libVirasoro_75.png" width="483" height="43" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_76.gif" alt="libVirasoro_76.gif" width="497" height="123" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_77.png" alt="libVirasoro_77.png" width="514" height="63" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_78.png" alt="libVirasoro_78.png" width="407" height="39" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_79.png" alt="libVirasoro_79.png" width="589" height="39" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_80.gif" alt="libVirasoro_80.gif" width="497" height="123" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_81.png" alt="libVirasoro_81.png" width="625" height="157" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_82.png" alt="libVirasoro_82.png" width="669" height="172" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_83.png" alt="libVirasoro_83.png" width="589" height="219" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_84.gif" alt="libVirasoro_84.gif" width="290" height="270" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_85.png" alt="libVirasoro_85.png" width="285" height="81" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_86.png" alt="libVirasoro_86.png" width="706" height="274" style="vertical-align:middle" />
+</p>
+
+<p class="Subsubsection">
+ end test
+</p>
+
+
+
+<p class="Section">
+ Neveu-Schwarz algebra
+</p>
+
+
+
+<p class="Section">
+ Neveu-Schwarz singular vectors, following BFIZ
+</p>
+
+
+
+<p class="Text">
+ Benoit-St. Aubin formula for sing vects of NS(1,q), Lett Math Phys 23: 117--120 (1991).
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_87.gif" alt="libVirasoro_87.gif" width="417" height="186" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_88.png" alt="libVirasoro_88.png" width="186" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_89.png" alt="libVirasoro_89.png" width="711" height="41" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ yellow book formulas 8.170
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_90.gif" alt="libVirasoro_90.gif" width="405" height="144" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_91.gif" alt="libVirasoro_91.gif" width="365" height="270" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_92.gif" alt="libVirasoro_92.gif" width="566" height="732" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_93.png" alt="libVirasoro_93.png" width="152" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_94.png" alt="libVirasoro_94.png" width="592" height="86" style="vertical-align:middle" />
+</p>
+
+<p class="Subsubsection">
+ test
+</p>
+
+
+
+<p class="Subsubsection">
+ end test
+</p>
+
+
+
+<p class="Section">
+ Polynomial operators
+</p>
+
+
+
+<p class="Section">
+ Misc BPZ diffeq stuff
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_95.gif" alt="libVirasoro_95.gif" width="511" height="249" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_96.png" alt="libVirasoro_96.png" width="431" height="81" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_97.gif" alt="libVirasoro_97.gif" width="246" height="60" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_98.png" alt="libVirasoro_98.png" width="703" height="106" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_99.png" alt="libVirasoro_99.png" width="608" height="20" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_100.png" alt="libVirasoro_100.png" width="8" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_101.png" alt="libVirasoro_101.png" width="577" height="81" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libVirasoro_102.png" alt="libVirasoro_102.png" width="222" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libVirasoro_103.png" alt="libVirasoro_103.png" width="8" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Section">
+ junk
+</p>
+
+
+
+
+
+
+<div style="font-family:Helvetica; font-size:11px; width:100%; border:1px none #999999; border-top-style:solid; padding-top:2px; margin-top:20px;">
+ <a href="http://www.wolfram.com/language/" style="color:#000; text-decoration:none;">
+  <span style="color:#555555">Created with the Wolfram Language</span> 
+ </a>
+</div>
+</body>
+
+</html>

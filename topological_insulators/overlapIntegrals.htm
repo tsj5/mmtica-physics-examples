@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN"
+        "HTMLFiles/xhtml-math11-f.dtd">
+
+<!-- Created with the Wolfram Language : www.wolfram.com -->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <title>
+  overlapIntegrals
+ </title>
+ <link href="HTMLFiles/overlapIntegrals.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<p class="Section">
+ Tai kludge
+</p>
+
+
+
+<p class="Section">
+ Filter/Weniger/Steinborn B functions (kludge, still)
+</p>
+
+
+
+<p class="Text">
+ Based on<br />Phys Rev. A 18, 1<br />Phys Rev. A 33, 3688<br />J. Math. Phys 24, 2533
+</p>
+
+
+
+<p class="Subsection">
+ Definitions more or less directly from papers
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/overlapIntegrals_1.gif" alt="overlapIntegrals_1.gif" width="391" height="354" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ <span style='font-weight: bold;'>NOTE</span>: in evaluating regular solid harmonic <span class="script">Y</span> need to do sum w/ dummy variables and then sub in acutal components of vec, otherwise we get 0^0 errors if vec has zero components -- currently a kludge<br /><br /><span style='font-weight: bold;'>NOTE</span>: modify def. of irregular solid harmonic <span class="script">Z</span> below by adding double factorial factor for simplicity
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/overlapIntegrals_2.gif" alt="overlapIntegrals_2.gif" width="515" height="312" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ <span style='font-weight: bold;'>NOTE</span>: modBesselKHalf evaluates the finite sum definition for kHat_(n <span style='font-weight: bold;'>PLUS</span> 1/2), eq. (3.3). This is Exp[-z] times the &ldquo;Bessel polynomial&rdquo; &theta;_n. <br /><br /><span style='font-weight: bold;'>NOTE</span>: <span class="script">B</span>N0 is the value of the B function at r=0, used for evaluating overlaps between orbitals on the same site.
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/overlapIntegrals_3.gif" alt="overlapIntegrals_3.gif" width="346" height="375" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ WGS86 eqs. (5.3); (5.7) [ and (5.8)]
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/overlapIntegrals_4.gif" alt="overlapIntegrals_4.gif" width="541" height="501" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ WGS86 eq. (5.6); one fewer (explicit) sum
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/overlapIntegrals_5.gif" alt="overlapIntegrals_5.gif" width="552" height="438" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ WGS86 eq. (6.17)<br /><span style='font-weight: bold;'>NOTE</span>: computes (2l-1)!! times the integral (2.15); ie overlap of our mod<span class="script">Z</span> with a B function<br />*think* this DOESN&rsquo;T include distributive functions
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/overlapIntegrals_6.png" alt="overlapIntegrals_6.png" width="566" height="333" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ WGS86 eq. (6.1)
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/overlapIntegrals_7.png" alt="overlapIntegrals_7.png" width="297" height="186" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ WGS86 eq. (7.1); (7.14) [and (7.15)]
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/overlapIntegrals_8.gif" alt="overlapIntegrals_8.gif" width="476" height="333" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ WGS86 eq. (7.24)<br />*does not* include delta fn distributions at origin
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/overlapIntegrals_9.gif" alt="overlapIntegrals_9.gif" width="560" height="564" style="vertical-align:middle" />
+</p>
+
+<p class="Subsection">
+ Wrappers &amp; handlers
+</p>
+
+
+
+<p class="Text">
+ We represent the most general single-particle orbital as a linear combination of mod<span class="script">Z</span> and <span class="script">B</span> functions, in the format {cst*Z1, cst*Z2..., cst*B1, cst*B2...}. 
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/overlapIntegrals_10.gif" alt="overlapIntegrals_10.gif" width="479" height="1110" style="vertical-align:middle" />
+</p>
+
+<p class="Subsection">
+ unused
+</p>
+
+
+
+<p class="Section">
+ Data -- &ldquo;B function&rdquo; orbitals
+</p>
+
+
+
+<p class="Text">
+ Taken from mmc01.txt
+</p>
+
+
+
+<p class="Text">
+ Convert &ldquo;atomic units&rdquo; of energy, length to meV and Angstroms, respectively
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/overlapIntegrals_11.gif" alt="overlapIntegrals_11.gif" width="165" height="39" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ First column: &ldquo;q&rdquo; index = n-&#8467;<br />Second column: exponential length scale in Bohr radii -- hang on; units of L or L^(-1)???<br />Third: Coefficient in linear combination
+</p>
+
+
+
+<p class="Subsection">
+ Oxygen 2p
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/overlapIntegrals_12.gif" alt="overlapIntegrals_12.gif" width="298" height="81" style="vertical-align:middle" />
+</p>
+
+<p class="Subsection">
+ Silicon 3p
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/overlapIntegrals_13.gif" alt="overlapIntegrals_13.gif" width="306" height="102" style="vertical-align:middle" />
+</p>
+
+<p class="Subsection">
+ Iron 3d
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/overlapIntegrals_14.gif" alt="overlapIntegrals_14.gif" width="306" height="81" style="vertical-align:middle" />
+</p>
+
+<p class="Subsection">
+ Sr 5s (FAKING IT)
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/overlapIntegrals_15.gif" alt="overlapIntegrals_15.gif" width="306" height="81" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/overlapIntegrals_16.gif" alt="overlapIntegrals_16.gif" width="347" height="39" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/overlapIntegrals_17.png" alt="overlapIntegrals_17.png" width="387" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/overlapIntegrals_18.png" alt="overlapIntegrals_18.png" width="365" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Section">
+ Data -- monomial orbitals
+</p>
+
+
+
+<p class="Section">
+ junk
+</p>
+
+
+
+
+
+
+<div style="font-family:Helvetica; font-size:11px; width:100%; border:1px none #999999; border-top-style:solid; padding-top:2px; margin-top:20px;">
+ <a href="http://www.wolfram.com/language/" style="color:#000; text-decoration:none;">
+  <span style="color:#555555">Created with the Wolfram Language</span> 
+ </a>
+</div>
+</body>
+
+</html>

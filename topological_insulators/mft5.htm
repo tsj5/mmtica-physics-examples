@@ -1,0 +1,897 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN"
+        "HTMLFiles/xhtml-math11-f.dtd">
+
+<!-- Created with the Wolfram Language : www.wolfram.com -->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <title>
+  mft5
+ </title>
+ <link href="HTMLFiles/mft5.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<p class="Title">
+ Mean-field theory for planar spins
+</p>
+
+
+
+<p class="Text">
+ Tom Jackson -- revised 6/4/12
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_1.png" alt="mft5_1.png" width="446" height="21" style="vertical-align:middle" />
+</p>
+
+<p class="Subtitle">
+ <br />General code:
+</p>
+
+
+
+<p class="Section">
+ Physical constants
+</p>
+
+
+
+<p class="Text">
+ Reference: 2011 CODATA values at http://pdg.lbl.gov/2011/reviews/rpp2011-rev-phys-constants.pdf
+</p>
+
+
+
+<p class="Text">
+ <span style='font-weight: bold;'>UNITS</span>: Magnetic field in Tesla. Length in Angstroms; Mass &amp; Time chosen so that energy units are meV and <span class="script">h</span>=1.<br /><span style='font-weight: bold;'>NOTE</span> this means we don&rsquo;t have the freedom to set <span style='font-style: italic;'>c</span>=1 as well! Below we convert <span style='font-style: italic;'>c</span> from m/sec to &Aring;/[new time unit] using <span class="script">h</span>= 6.5...*10^(-22) MeV*sec = 1 meV * [new time unit].
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_2.gif" alt="mft5_2.gif" width="376" height="39" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ Bohr magneton in meV/Tesla,<br />Nuclear magneton in meV/Tesla,<br />Boltzmann constant in meV/K:
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_3.gif" alt="mft5_3.gif" width="149" height="60" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ Electron mass in [new mass unit] = meV * ([new time unit] / &Aring;)^2,<br />Neutron mass in [new mass unit]<br />Electron g-factor (dimensionless)<br />Neutron magnetic moment
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_4.gif" alt="mft5_4.gif" width="276" height="102" style="vertical-align:middle" />
+</p>
+
+<p class="Section">
+ Definitions -- utility functions
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_5.png" alt="mft5_5.png" width="373" height="102" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_6.gif" alt="mft5_6.gif" width="491" height="39" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ Define new notation for matrix operations: for matrices A,B,C... define ATBTC.. (with T being \ [DownTee], or [ESC]dT[ESC]) to be the iterated conjugation ... C.B.A.B&#62407;.C&#62407;.... This is very nonstandard, but the infix notation makes it more convenient to enter.
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_7.png" alt="mft5_7.png" width="442" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_8.png" alt="mft5_8.png" width="530" height="39" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ <span style='font-style: italic;font-weight: bold;'>TODO: factor out overall monomial factor from expression (where RHS = 0) -- also handle lists, matrices</span>
+</p>
+
+
+
+<p class="Section">
+ Definitions -- Lattices and crystals
+</p>
+
+
+
+<p class="Subsection">
+ Bravais lattices
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_9.gif" alt="mft5_9.gif" width="611" height="81" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_10.gif" alt="mft5_10.gif" width="397" height="270" style="vertical-align:middle" />
+</p>
+
+<p class="Subsection">
+ Crystal systems
+</p>
+
+
+
+<p class="Text">
+ Note: the ?AtomQ test is necessary to enable different behavior for lattices defined with the supercell command (below).
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_11.gif" alt="mft5_11.gif" width="608" height="81" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_12.gif" alt="mft5_12.gif" width="560" height="207" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_13.gif" alt="mft5_13.gif" width="473" height="354" style="vertical-align:middle" />
+</p>
+
+<p class="Subsection">
+ Supercells (multiples of crystal unit cell)
+</p>
+
+
+
+<p class='Text' style='font-style: italic;font-weight: bold;'>
+ TODO: need bzFunction for this case
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_14.gif" alt="mft5_14.gif" width="755" height="459" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_15.png" alt="mft5_15.png" width="410" height="60" style="vertical-align:middle" />
+</p>
+
+<p class="Subsection">
+ General definitions
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_16.gif" alt="mft5_16.gif" width="525" height="312" style="vertical-align:middle" />
+</p>
+
+<p class='Section' style='text-align: left;'>
+ <span style='font-style: italic;font-weight: normal;'>Example -- Honeycomb crystal system </span>
+</p>
+
+
+
+<p class="Section">
+ Definitions -- Second-quantized boson operators
+</p>
+
+
+
+<p class="Text">
+ Convention: we treat any symbol of the form <span><span><img src="HTMLFiles/mft5_17.png" alt="mft5_17.png" width="8" height="22" style="vertical-align:middle" /></span></span>, ie OverHat[X], as an operator with potentially non-trivial commutation relations. Arguments (postions, momenta, flavor indices) are specified like arguemnts to a function, ie OverHat[b][k,s]. Creation operators are denoted by OverHat[SuperDagger[X]]. All this is kept as general as possible, in case we e.g. want to work with both boson and fermion ops in a future project.
+</p>
+
+
+
+<p class="Text">
+ We keep track of the nontrivial commutation relations by connecting boson operators with NonCommutativeMultiply. Define ExpandNCM as an extension of Expand which knows about non-commutative multiplication and treats all c-number factors in an expression appropriately.
+</p>
+
+
+
+<p class='Text' style='font-style: italic;'>
+ <span style='font-weight: bold;'>TODO: add Interpretation statements to allow copy &amp; base of operators from output form into input</span>
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_18.gif" alt="mft5_18.gif" width="714" height="165" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_19.gif" alt="mft5_19.gif" width="420" height="312" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_20.gif" alt="mft5_20.gif" width="915" height="250" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ Patterns which match creation and annihilation operators, both with and without arguments. opSign = 1 for annihilation operators, = -1 for creation operators.
+</p>
+
+
+
+<p class="Text">
+ Cases considered by normOrderedQ : 1)&nbsp;&nbsp;puts all ann. ops before cr. ops., 2) does nothing if two adjacent ops are identical, 3) sorts two ann ops (or two cr. ops) by reverse lex order in their labels, ie a^hat[ ...] gets put before b^hat[ ...] before cHat[ ...], etc. The exact details of the ordering in 3) don' t matter, so long as we pick some canonical order for all operators, which is done by opLabel. 
+</p>
+
+
+
+<p class="Text">
+ Default behavior for the (generalized) commutator is to assume that any operators with different indices (of any kind) commute, but this can be overridden by supplying a new function commuteQ.
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_21.gif" alt="mft5_21.gif" width="639" height="585" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ Definitions specific to boson operators:
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_22.gif" alt="mft5_22.gif" width="692" height="102" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ (If our problem involved fermions as well, we&rsquo;d define them using)
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_23.gif" alt="mft5_23.gif" width="733" height="102" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ After we&rsquo;ve done all the operations that depend on the boson operators&rsquo; nontrivial commutation relations, return the coefficients of terms linear in bosons (to verify that we&rsquo;re perturbing around a real ground state) and quadratic in bosons (to diagonalize, below).
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_24.gif" alt="mft5_24.gif" width="839" height="312" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_25.gif" alt="mft5_25.gif" width="560" height="354" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_26.gif" alt="mft5_26.gif" width="677" height="312" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_27.png" alt="mft5_27.png" width="439" height="144" style="vertical-align:middle" />
+</p>
+
+<p class="Section">
+ Definitions -- Terms in Hamiltonian
+</p>
+
+
+
+<p class="Section">
+ Definitions -- Symplectic diagonalization/spectrum
+</p>
+
+
+
+<p class="Subsection">
+ quadratic Hamiltonian in momentum space
+</p>
+
+
+
+<p class="Text">
+ for future ref: splitting the momentum sum (the two terms in each case) of quad boson fourier is necessary, otherwise we don&rsquo;t get all the species (coefficient matrix isn&rsquo;t even-dimensional). <br />quad boson sym is necessary since otherwise diagonal blocks of the coeff matrix (ie the non boson # conserving ops)&nbsp;&nbsp;aren&rsquo;t diagonal. 
+</p>
+
+
+
+<p class="Text">
+ <span style='font-style: italic;font-weight: bold;'>TODO: make this faster: if we only care about the quadratic part, can skip right to the coefficient matrix &amp; symmetrize that instead of working w boson operators.</span>
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_28.gif" alt="mft5_28.gif" width="553" height="459" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ Basic matrices for doing symplectic stuff. &Omega; is the symplectic unit; here we use the convention that it&rsquo;s equal to <span><span><img src="HTMLFiles/mft5_29.png" alt="mft5_29.png" width="53" height="36" style="vertical-align:middle" /></span></span>. &Gamma; is a unitary change of basis to &ldquo;real&rdquo; position/momentum-like operators: &Gamma;<span><span><img src="HTMLFiles/mft5_30.png" alt="mft5_30.png" width="30" height="52" style="vertical-align:middle" /></span></span>=<span><span><img src="HTMLFiles/mft5_31.png" alt="mft5_31.png" width="24" height="44" style="vertical-align:middle" /></span></span> . The symplectic transpose of a matrix M is &Omega; M&#62407; &Omega;&#62407;; by analogy with the real and hermitian transposes for symmetric and hermitian matrices, a matrix is symplectic if it&rsquo;s equal to its symplectic transpose. <br />symplecticBasisPerm gives a permutation matrix P that transfers between the two conventions for the symplectic unit: P. diag[<span><span><img src="HTMLFiles/mft5_32.png" alt="mft5_32.png" width="45" height="36" style="vertical-align:middle" /></span></span>,... , <span><span><img src="HTMLFiles/mft5_33.png" alt="mft5_33.png" width="45" height="36" style="vertical-align:middle" /></span></span>] .P&#62407;=&Omega;. We need it because the Schur decomposition is block diagonal -- ie SchurDecomposition returns diag[<span><span><img src="HTMLFiles/mft5_34.png" alt="mft5_34.png" width="87" height="38" style="vertical-align:middle" /></span></span>,... , <span><span><img src="HTMLFiles/mft5_35.png" alt="mft5_35.png" width="89" height="38" style="vertical-align:middle" /></span></span>], and we want these values in the form&nbsp;&nbsp;<span><span><img src="HTMLFiles/mft5_36.png" alt="mft5_36.png" width="165" height="38" style="vertical-align:middle" /></span></span>.
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_37.gif" alt="mft5_37.gif" width="683" height="144" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ In symplecticDiag below, we use the Schur decomposition to (block-)diagonalize a REAL matrix X whose block upper-triangular form is T = diag[<span><span><img src="HTMLFiles/mft5_38.png" alt="mft5_38.png" width="87" height="38" style="vertical-align:middle" /></span></span>,... , <span><span><img src="HTMLFiles/mft5_39.png" alt="mft5_39.png" width="89" height="38" style="vertical-align:middle" /></span></span>] , with all the <span><span><img src="HTMLFiles/mft5_40.png" alt="mft5_40.png" width="23" height="19" style="vertical-align:middle" /></span></span> real. sortedSchurDecompoosition puts this form in a canonical order by finding a permutation matrix P so that P T P&#62407; has all positive entries on its upper diagonal, sorted in descending order. We still have the decomposition that, if {Q,T} = sortedSchurDecompoosition[X], then X = Q. T. Q&#62407;, where Q is orthogonal (for X deriving from positive-definite Hamiltonians, which means that Q and T will be purely real).
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_41.gif" alt="mft5_41.gif" width="456" height="396" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ symplecticSpectrum computes numeric symplectic eigenvalues (only) of a Hermitian matrix (which should be positive definite, though we don&rsquo;t check for that). These are ordered from largest to smallest, the same order used by symplecticDiag.
+</p>
+
+
+
+<p class="Text">
+ Given a 2n x 2n Hermitian matrix H, symplecticDiag returns the n symplectic eigenvalues <span><span><img src="HTMLFiles/mft5_42.png" alt="mft5_42.png" width="18" height="19" style="vertical-align:middle" /></span></span>} and a matrix S, symplectic w/r/t the unit &Omega; defined above, such that <span><span><img src="HTMLFiles/mft5_43.png" alt="mft5_43.png" width="33" height="19" style="vertical-align:middle" /></span></span> = <span><span><img src="HTMLFiles/mft5_44.png" alt="mft5_44.png" width="126" height="38" style="vertical-align:middle" /></span></span>, in other words the transformed boson Hamiltonian is diagonal in the boson variables <span><span><img src="HTMLFiles/mft5_45.png" alt="mft5_45.png" width="30" height="40" style="vertical-align:middle" /></span></span> = (<span><span><img src="HTMLFiles/mft5_46.png" alt="mft5_46.png" width="15" height="19" style="vertical-align:middle" /></span></span><span><span><img src="HTMLFiles/mft5_47.png" alt="mft5_47.png" width="16" height="19" style="vertical-align:middle" /></span></span>.<span><span><img src="HTMLFiles/mft5_48.png" alt="mft5_48.png" width="30" height="40" style="vertical-align:middle" /></span></span>= &ndash;&Omega;S&Omega;.<span><span><img src="HTMLFiles/mft5_49.png" alt="mft5_49.png" width="30" height="40" style="vertical-align:middle" /></span></span>. <br />symplecticDiag itself just transforms the Hamiltonian into the momentum/position basis (define this as V); symplecticDiagPQ then does the actual diagonalization. Defining X = <span><span><img src="HTMLFiles/mft5_50.png" alt="mft5_50.png" width="30" height="45" style="vertical-align:middle" /></span></span>.&Omega;. <span><span><img src="HTMLFiles/mft5_51.png" alt="mft5_51.png" width="30" height="45" style="vertical-align:middle" /></span></span>, we use the (sorted; see above) Schur decomposition to find matrices {O,Y} such that X = O Y O&#62407;, where O is orthogonal and Y is block diagonal. <br /><br />We use SchurDecomposition[X] rather than Transpose[Eigenvectors[X]] for (unitary) diagonalization of X, since the former is guaranteed to return an orthogonal matrix while the latter may be NONunitary when a matrix has degenerate eigenvalues, EVEN IF X is normal (unitarily diagonalizable). ALSO note that roundoff may have given X a small imaginary part, which we need to kill explicitly by taking Re BEFORE doing the Schur decomposition (this gets done in sortedSchurDecomposition, above) (otherwise the returned Y is upper triangular and complex rather than real and block U.T. -- really should just rewrite this to handle most general complex but Hermitian, +ve def. hams.) <br /><br />Letting S = <span><span><img src="HTMLFiles/mft5_52.png" alt="mft5_52.png" width="29" height="45" style="vertical-align:middle" /></span></span>O&#62407;<span><span><img src="HTMLFiles/mft5_53.png" alt="mft5_53.png" width="30" height="45" style="vertical-align:middle" /></span></span>then ensures that S&Omega;S&#62407; = &Omega;, ie that S really is symplectic.<br /><br />Refs:<br />Notes from Israel<br />appendix A, B of 0902.1502 (source of notation used)<br />more on Williamson theorem &amp; extension to non- +ve definite forms: appendix 6 of V. I. Arnold, Math. meth. of classical mechanics
+</p>
+
+
+
+<p class="Text">
+ <span style='font-weight: bold;'>NOTE</span>: this breaks for matrices with vanishing eigenvalues, even though symplectic spectrum remains well-defined. Need to handle this...
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_54.gif" alt="mft5_54.gif" width="594" height="480" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ so &Gamma; <span><span><img src="HTMLFiles/mft5_55.png" alt="mft5_55.png" width="30" height="52" style="vertical-align:middle" /></span></span>=<span><span><img src="HTMLFiles/mft5_56.png" alt="mft5_56.png" width="24" height="44" style="vertical-align:middle" /></span></span>, then the quadratic Ham <span><span><img src="HTMLFiles/mft5_57.png" alt="mft5_57.png" width="37" height="52" style="vertical-align:middle" /></span></span>&Gamma;&#62407;.(<span><span><img src="HTMLFiles/mft5_58.png" alt="mft5_58.png" width="12" height="19" style="vertical-align:middle" /></span></span>. H.<span><span><img src="HTMLFiles/mft5_59.png" alt="mft5_59.png" width="13" height="19" style="vertical-align:middle" /></span></span>). &Gamma;<span><span><img src="HTMLFiles/mft5_60.png" alt="mft5_60.png" width="30" height="52" style="vertical-align:middle" /></span></span> = <span><span><img src="HTMLFiles/mft5_61.png" alt="mft5_61.png" width="24" height="44" style="vertical-align:middle" /></span></span>&#62407; . <span><span><img src="HTMLFiles/mft5_62.png" alt="mft5_62.png" width="15" height="19" style="vertical-align:middle" /></span></span><span><span><img src="HTMLFiles/mft5_63.png" alt="mft5_63.png" width="24" height="44" style="vertical-align:middle" /></span></span> (here transpose means &ldquo;transpose of a vector of operators&rdquo;; not the Hermitian conjugate <span><span><img src="HTMLFiles/mft5_64.png" alt="mft5_64.png" width="14" height="19" style="vertical-align:middle" /></span></span>&lt;-&gt;<span><span><img src="HTMLFiles/mft5_65.png" alt="mft5_65.png" width="8" height="23" style="vertical-align:middle" /></span></span>). symplecticDiagPQ[<span><span><img src="HTMLFiles/mft5_66.png" alt="mft5_66.png" width="9" height="19" style="vertical-align:middle" /></span></span>] returns a symplectic <span><span><img src="HTMLFiles/mft5_67.png" alt="mft5_67.png" width="9" height="19" style="vertical-align:middle" /></span></span> such that&nbsp;&nbsp;<span><span><img src="HTMLFiles/mft5_68.png" alt="mft5_68.png" width="9" height="19" style="vertical-align:middle" /></span></span> . <span><span><img src="HTMLFiles/mft5_69.png" alt="mft5_69.png" width="9" height="19" style="vertical-align:middle" /></span></span>. <span><span><img src="HTMLFiles/mft5_70.png" alt="mft5_70.png" width="9" height="19" style="vertical-align:middle" /></span></span>&#62407; = <span><span><img src="HTMLFiles/mft5_71.png" alt="mft5_71.png" width="85" height="19" style="vertical-align:middle" /></span></span>]. So the correct S that diagonalizes the original H is given by S = &Gamma;&#62407;. <span><span><img src="HTMLFiles/mft5_72.png" alt="mft5_72.png" width="9" height="19" style="vertical-align:middle" /></span></span> . <span><span><img src="HTMLFiles/mft5_73.png" alt="mft5_73.png" width="12" height="19" style="vertical-align:middle" /></span></span> 
+</p>
+
+
+
+<p class="Text">
+ Factor of 4 in symplectic spectrum arises from the fact that for each flavor of boson, diagonalized Ham. contains four terms <span><span><img src="HTMLFiles/mft5_74.png" alt="mft5_74.png" width="14" height="19" style="vertical-align:middle" /></span></span>[k] b[-k], <span><span><img src="HTMLFiles/mft5_75.png" alt="mft5_75.png" width="14" height="19" style="vertical-align:middle" /></span></span>[-k] b[k], b[k]<span><span><img src="HTMLFiles/mft5_76.png" alt="mft5_76.png" width="14" height="19" style="vertical-align:middle" /></span></span>[-k], b[-k]<span><span><img src="HTMLFiles/mft5_77.png" alt="mft5_77.png" width="14" height="19" style="vertical-align:middle" /></span></span>[k] which after normal ordering produce 4(<span><span><img src="HTMLFiles/mft5_78.png" alt="mft5_78.png" width="14" height="19" style="vertical-align:middle" /></span></span>[k] b[-k] +1/2). As another consequence, the spectrum of the matrix is four-fold degenerate, which is why we only return every fourth eigenvalue.
+</p>
+
+
+
+<p class='Section' style='text-align: left;'>
+ <span style='font-style: italic;font-weight: normal;'>Example -- spin waves in isotropic antiferromagnet</span>
+</p>
+
+
+
+<p class="Section">
+ Definitions -- Spin-spin structure factor
+</p>
+
+
+
+<p class="Text">
+ incoherentCrossSection returns a list of the form <span><span><img src="HTMLFiles/mft5_79.png" alt="mft5_79.png" width="25" height="19" style="vertical-align:middle" /></span></span>, <span><span><img src="HTMLFiles/mft5_80.png" alt="mft5_80.png" width="23" height="19" style="vertical-align:middle" /></span></span>}}, where the list is over all spin-wave branches, &omega; is the frequency of the branch at the given momentum <span class="script">q</span>, and I(<span class="script">q</span>) is proportional to the scattering intensity (times the magnetic form factor for Fe2+ and a <span class="script">q</span>-independent constant). 
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_81.gif" alt="mft5_81.gif" width="505" height="963" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_82.gif" alt="mft5_82.gif" width="490" height="333" style="vertical-align:middle" />
+</p>
+
+<p class="Subsection">
+ Iron atom magnetic form factor
+</p>
+
+
+
+<p class="Text">
+ Total orbital angular momentum on the Fe2+ should be completely quenched since complex is in a high spin state from the relatively small tetrahedral crystal field splitting. Assuming here that dominant contribution to L actually comes from the net spin via the spin-orbit coupling, resulting in an effective g&gt;2. <br />Reference:<br />Sections 5.1--5.3 of Marshall &amp; Lovesey, Theory of thermal neutron scattering
+</p>
+
+
+
+<p class="Text">
+ fe2PlusJ encodes magnetic form factor coefficients for Fe2+, in the format {D,{{A,B,C},{a,b,c}}}.<br />Reference:<br />sec. 4.4.5 of International Tables for Crystallography, Volume C, 2006 edition<br />online at http://it.iucr.org/Cb/ch4o4v0001/sec4o4o5.pdf<br />same info available w/o institutional access at http://www.ill.eu/sites/ccsl/ffacts/ffachtml.html
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_83.gif" alt="mft5_83.gif" width="646" height="186" style="vertical-align:middle" />
+</p>
+
+<p class="Subtitle">
+ <br />Problem-specific results -- classical:
+</p>
+
+
+
+<p class="Section">
+ Lattices used in this calculation
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_84.gif" alt="mft5_84.gif" width="640" height="144" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_85.gif" alt="mft5_85.gif" width="690" height="270" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_86.gif" alt="mft5_86.gif" width="653" height="123" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ Note: our convention is to always divide by # of sites in the unit cell (done in singleSiteOp and NNop below); this gives us the ground state energy per site, independent of the size of the cell.
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_87.png" alt="mft5_87.png" width="212" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/mft5_88.png" alt="mft5_88.png" width="17" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Section">
+ Classical MFT Hamiltonian
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_89.gif" alt="mft5_89.gif" width="706" height="39" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_90.gif" alt="mft5_90.gif" width="374" height="228" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/mft5_91.png" alt="mft5_91.png" width="642" height="330" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ change to reduced parameters
+</p>
+
+
+
+<p class="Text">
+ change of angular variables and simplified definition of MFT energy in terms of these
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_92.gif" alt="mft5_92.gif" width="535" height="81" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ verify definition of modelE above:
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_93.gif" alt="mft5_93.gif" width="488" height="102" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/mft5_94.png" alt="mft5_94.png" width="545" height="129" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/mft5_95.png" alt="mft5_95.png" width="472" height="108" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/mft5_96.png" alt="mft5_96.png" width="8" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Section">
+ Definitions -- Change of variables (&amp; couplings)
+</p>
+
+
+
+<p class="Section">
+ Numeric solutions
+</p>
+
+
+
+<p class="Section">
+ Results from analytic solution (I)
+</p>
+
+
+
+<p class="Subtitle">
+ Problem-specific results -- quantum:
+</p>
+
+
+
+<p class="Section">
+ Quantum MFT Hamiltonian
+</p>
+
+
+
+<p class="Section">
+ Quantum MFT Hamiltonian, revised
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_97.gif" alt="mft5_97.gif" width="237" height="270" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_98.png" alt="mft5_98.png" width="374" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_99.gif" alt="mft5_99.gif" width="706" height="39" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_100.gif" alt="mft5_100.gif" width="580" height="459" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_101.png" alt="mft5_101.png" width="172" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/mft5_102.png" alt="mft5_102.png" width="626" height="111" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_103.png" alt="mft5_103.png" width="468" height="144" style="vertical-align:middle" />
+</p>
+
+<table class='Output'>
+ <tr style='vertical-align: baseline;'>
+  <td style='text-align: left;'><span><img src="HTMLFiles/mft5_104.png" alt="mft5_104.png" width="581" height="32" style="vertical-align:middle" /></span></td>
+ </tr>
+ <tr style='vertical-align: baseline;'>
+  <td style='text-align: left;'><span><img src="HTMLFiles/mft5_105.png" alt="mft5_105.png" width="581" height="32" style="vertical-align:middle" /></span></td>
+ </tr>
+ <tr style='vertical-align: baseline;'>
+  <td style='text-align: left;'><span><img src="HTMLFiles/mft5_106.png" alt="mft5_106.png" width="590" height="32" style="vertical-align:middle" /></span></td>
+ </tr>
+ <tr style='vertical-align: baseline;'>
+  <td style='text-align: left;'><span><img src="HTMLFiles/mft5_107.png" alt="mft5_107.png" width="590" height="32" style="vertical-align:middle" /></span></td>
+ </tr>
+</table>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_108.png" alt="mft5_108.png" width="189" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/mft5_109.png" alt="mft5_109.png" width="333" height="20" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_110.png" alt="mft5_110.png" width="399" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/mft5_111.png" alt="mft5_111.png" width="433" height="20" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_112.png" alt="mft5_112.png" width="426" height="39" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/mft5_113.png" alt="mft5_113.png" width="457" height="20" style="vertical-align:middle" />
+</p>
+
+<p class="Subsection">
+ ok, lock&amp;load
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_114.png" alt="mft5_114.png" width="603" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_115.png" alt="mft5_115.png" width="486" height="81" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_116.png" alt="mft5_116.png" width="211" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/mft5_117.png" alt="mft5_117.png" width="400" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_118.png" alt="mft5_118.png" width="149" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/mft5_119.png" alt="mft5_119.png" width="61" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_120.png" alt="mft5_120.png" width="456" height="333" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_121.png" alt="mft5_121.png" width="445" height="19" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ 
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_123.png" alt="mft5_123.png" width="72" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Print">
+ <a id="Info3547993580-4216017"></a>
+ <img src="HTMLFiles/mft5_124.png" alt="mft5_124.png" width="463" height="65" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_125.png" alt="mft5_125.png" width="4" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_126.png" alt="mft5_126.png" width="441" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Message">
+ <img src="HTMLFiles/mft5_127.png" alt="mft5_127.png" width="388" height="16" style="vertical-align:middle" />
+</p>
+
+<p class="Message">
+ <img src="HTMLFiles/mft5_128.png" alt="mft5_128.png" width="390" height="16" style="vertical-align:middle" />
+</p>
+
+<p class="Message">
+ <img src="HTMLFiles/mft5_129.png" alt="mft5_129.png" width="388" height="16" style="vertical-align:middle" />
+</p>
+
+<p class="Message">
+ <img src="HTMLFiles/mft5_130.png" alt="mft5_130.png" width="466" height="16" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_131.png" alt="mft5_131.png" width="167" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/mft5_132.png" alt="mft5_132.png" width="650" height="333" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_133.gif" alt="mft5_133.gif" width="365" height="102" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_134.png" alt="mft5_134.png" width="323" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/mft5_135.png" alt="mft5_135.png" width="267" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_136.png" alt="mft5_136.png" width="430" height="81" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/mft5_137.gif" alt="mft5_137.gif" width="360" height="228" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_138.png" alt="mft5_138.png" width="464" height="123" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_139.png" alt="mft5_139.png" width="125" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/mft5_140.gif" alt="mft5_140.gif" width="360" height="227" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_141.png" alt="mft5_141.png" width="96" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Print">
+ <a id="Info3548057778-4216017"></a>
+ <img src="HTMLFiles/mft5_142.png" alt="mft5_142.png" width="571" height="20" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_143.png" alt="mft5_143.png" width="448" height="312" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_144.png" alt="mft5_144.png" width="339" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Message">
+ <img src="HTMLFiles/mft5_145.png" alt="mft5_145.png" width="637" height="33" style="vertical-align:middle" />
+</p>
+
+<p class="Message">
+ <img src="HTMLFiles/mft5_146.png" alt="mft5_146.png" width="639" height="33" style="vertical-align:middle" />
+</p>
+
+<p class="Message">
+ <img src="HTMLFiles/mft5_147.png" alt="mft5_147.png" width="639" height="33" style="vertical-align:middle" />
+</p>
+
+<p class="Message">
+ <img src="HTMLFiles/mft5_148.png" alt="mft5_148.png" width="466" height="16" style="vertical-align:middle" />
+</p>
+
+<p class="Message">
+ <img src="HTMLFiles/mft5_149.png" alt="mft5_149.png" width="638" height="222" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/mft5_150.png" alt="mft5_150.png" width="328" height="98" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_151.png" alt="mft5_151.png" width="433" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Message">
+ <img src="HTMLFiles/mft5_152.png" alt="mft5_152.png" width="376" height="16" style="vertical-align:middle" />
+</p>
+
+<p class="Message">
+ <img src="HTMLFiles/mft5_153.png" alt="mft5_153.png" width="378" height="16" style="vertical-align:middle" />
+</p>
+
+<p class="Message">
+ <img src="HTMLFiles/mft5_154.png" alt="mft5_154.png" width="378" height="16" style="vertical-align:middle" />
+</p>
+
+<p class="Message">
+ <img src="HTMLFiles/mft5_155.png" alt="mft5_155.png" width="466" height="16" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_156.png" alt="mft5_156.png" width="555" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/mft5_157.png" alt="mft5_157.png" width="303" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_158.png" alt="mft5_158.png" width="449" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/mft5_159.png" alt="mft5_159.png" width="61" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_160.png" alt="mft5_160.png" width="41" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Print">
+ <a id="Info3547994767-4216017"></a>
+ <img src="HTMLFiles/mft5_161.png" alt="mft5_161.png" width="402" height="43" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_162.png" alt="mft5_162.png" width="219" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/mft5_163.png" alt="mft5_163.png" width="177" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_164.png" alt="mft5_164.png" width="597" height="123" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_165.png" alt="mft5_165.png" width="321" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/mft5_166.png" alt="mft5_166.png" width="74" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_167.png" alt="mft5_167.png" width="411" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/mft5_168.png" alt="mft5_168.png" width="426" height="39" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_169.png" alt="mft5_169.png" width="444" height="102" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/mft5_170.gif" alt="mft5_170.gif" width="365" height="377" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_171.png" alt="mft5_171.png" width="149" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/mft5_172.png" alt="mft5_172.png" width="654" height="311" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/mft5_173.png" alt="mft5_173.png" width="196" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/mft5_174.png" alt="mft5_174.png" width="654" height="2834" style="vertical-align:middle" />
+</p>
+
+<p class="Section">
+ Debugging: making sure MFT4/MFT5 give same minimization equations, etc. -- PASSES
+</p>
+
+
+
+
+
+
+<div style="font-family:Helvetica; font-size:11px; width:100%; border:1px none #999999; border-top-style:solid; padding-top:2px; margin-top:20px;">
+ <a href="http://www.wolfram.com/language/" style="color:#000; text-decoration:none;">
+  <span style="color:#555555">Created with the Wolfram Language</span> 
+ </a>
+</div>
+</body>
+
+</html>

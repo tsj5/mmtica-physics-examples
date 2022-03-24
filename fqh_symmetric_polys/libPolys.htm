@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN"
+        "HTMLFiles/xhtml-math11-f.dtd">
+
+<!-- Created with the Wolfram Language : www.wolfram.com -->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <title>
+  libPolys
+ </title>
+ <link href="HTMLFiles/libPolys.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<p class="Title">
+ Symmetric polynomials
+</p>
+
+
+
+<p class="Section">
+ backwards compatibility
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_1.gif" alt="libPolys_1.gif" width="702" height="144" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_2.gif" alt="libPolys_2.gif" width="1176" height="354" style="vertical-align:middle" />
+</p>
+
+<p class="Section">
+ Partitions
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_3.png" alt="libPolys_3.png" width="319" height="102" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_4.gif" alt="libPolys_4.gif" width="501" height="123" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ Orderings on partitions: Lexicographic is a total order while dominance is only partial (defined only for |&lambda;| = |&kappa;|; note we don&rsquo;t include checks for that here). Lex is compatible with Dom.<br />&ldquo;Contained&rdquo; means &kappa; is a subset of &lambda; as diagrams.
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_5.gif" alt="libPolys_5.gif" width="430" height="417" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_6.gif" alt="libPolys_6.gif" width="390" height="207" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ Convention that partition lives in first quadrant; coordinates of the elements are of (row, column) form and start from (1,1)
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_7.gif" alt="libPolys_7.gif" width="571" height="207" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_8.gif" alt="libPolys_8.gif" width="586" height="396" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ http://en.wikipedia.org/wiki/Combinatorial_number_system
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_9.gif" alt="libPolys_9.gif" width="371" height="291" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_10.gif" alt="libPolys_10.gif" width="296" height="39" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libPolys_11.png" alt="libPolys_11.png" width="504" height="39" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libPolys_12.png" alt="libPolys_12.png" width="213" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_13.png" alt="libPolys_13.png" width="193" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libPolys_14.png" alt="libPolys_14.png" width="306" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libPolys_15.png" alt="libPolys_15.png" width="242" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Section">
+ Generic sym poly functions
+</p>
+
+
+
+<p class="Text">
+ Dim. of TISPs, from SCR&rsquo;07
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_16.png" alt="libPolys_16.png" width="597" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ VERIFY sym still symmetrizing over proper # of variables if fewer variables given as input!
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_17.gif" alt="libPolys_17.gif" width="633" height="333" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ tsr does decom into SRC tesps, plus te[1] := esp[1]/n = CM
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_18.gif" alt="libPolys_18.gif" width="509" height="690" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_19.gif" alt="libPolys_19.gif" width="722" height="501" style="vertical-align:middle" />
+</p>
+
+<p class="Section">
+ poly manipulation
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_20.png" alt="libPolys_20.png" width="411" height="165" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_21.png" alt="libPolys_21.png" width="552" height="249" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_22.gif" alt="libPolys_22.gif" width="560" height="165" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_23.png" alt="libPolys_23.png" width="266" height="60" style="vertical-align:middle" />
+</p>
+
+<p class="Section">
+ Explicit expressions
+</p>
+
+
+
+<p class="Text">
+ tesp are SRC trans-inv homog. symmetric polys.<br />ttesps defined to have monic normalization, ie leading term is 1 * z[1]^|ll| -- EXCEPT tte[1] == zcm. Does this matter?
+</p>
+
+
+
+<p class="Text">
+ VERIFY msps being generated correctly &amp; sym factor done properly... deal is with ptitions that would have multiple 0s
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_24.png" alt="libPolys_24.png" width="245" height="144" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_25.gif" alt="libPolys_25.gif" width="613" height="396" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_26.gif" alt="libPolys_26.gif" width="449" height="501" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_27.gif" alt="libPolys_27.gif" width="476" height="228" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_28.gif" alt="libPolys_28.gif" width="213" height="39" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libPolys_29.png" alt="libPolys_29.png" width="263" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libPolys_30.png" alt="libPolys_30.png" width="347" height="39" style="vertical-align:middle" />
+</p>
+
+<p class="Section">
+ Change of bases
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_31.gif" alt="libPolys_31.gif" width="856" height="249" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_32.gif" alt="libPolys_32.gif" width="191" height="144" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ Newton relations for multiplicative bases as determinants:
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_33.gif" alt="libPolys_33.gif" width="384" height="795" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ Schur to others:
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_34.gif" alt="libPolys_34.gif" width="480" height="249" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ Monomial to elementary: this gives change-of-basis matrix as defined in Stanley as number of 0-1 matrices with row and column sums given by the Esp and Msp partitions, (ll and mu) respectively. n is the number of variables; if not specified it&rsquo;s made large enough to get a nonzero answer. <br /><br />Could probably go even faster by writing this matrix as square of Kostka matrix and evaluating that as a determinant (I guess?)
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_35.gif" alt="libPolys_35.gif" width="679" height="732" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_36.png" alt="libPolys_36.png" width="187" height="102" style="vertical-align:middle" />
+</p>
+
+<table class='Output'>
+ <tr style='vertical-align: baseline;'>
+  <td style='text-align: left;'><span>0</span></td>
+  <td style='text-align: left;'><span>0</span></td>
+  <td style='text-align: left;'><span>0</span></td>
+  <td style='text-align: left;'><span>0</span></td>
+  <td style='text-align: left;'><span>1</span></td>
+ </tr>
+ <tr style='vertical-align: baseline;'>
+  <td style='text-align: left;'><span>0</span></td>
+  <td style='text-align: left;'><span>0</span></td>
+  <td style='text-align: left;'><span>0</span></td>
+  <td style='text-align: left;'><span>1</span></td>
+  <td style='text-align: left;'><span>4</span></td>
+ </tr>
+ <tr style='vertical-align: baseline;'>
+  <td style='text-align: left;'><span>0</span></td>
+  <td style='text-align: left;'><span>0</span></td>
+  <td style='text-align: left;'><span>1</span></td>
+  <td style='text-align: left;'><span>2</span></td>
+  <td style='text-align: left;'><span>6</span></td>
+ </tr>
+ <tr style='vertical-align: baseline;'>
+  <td style='text-align: left;'><span>0</span></td>
+  <td style='text-align: left;'><span>1</span></td>
+  <td style='text-align: left;'><span>2</span></td>
+  <td style='text-align: left;'><span>5</span></td>
+  <td style='text-align: left;'><span>12</span></td>
+ </tr>
+ <tr style='vertical-align: baseline;'>
+  <td style='text-align: left;'><span>1</span></td>
+  <td style='text-align: left;'><span>4</span></td>
+  <td style='text-align: left;'><span>6</span></td>
+  <td style='text-align: left;'><span>12</span></td>
+  <td style='text-align: left;'><span>24</span></td>
+ </tr>
+</table>
+
+<p class="Text">
+ Power sums to elementary symmetric polynomials:
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_37.png" alt="libPolys_37.png" width="617" height="81" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ elementary &harr; trans-invariant elementary:
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_38.png" alt="libPolys_38.png" width="471" height="102" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_39.gif" alt="libPolys_39.gif" width="769" height="480" style="vertical-align:middle" />
+</p>
+
+<p class="Section">
+ Operators on polynomials
+</p>
+
+
+
+<p class="Text">
+ espSplit rewrites exp&rsquo;n in esps of total[n12] vars as exp&rsquo;n in esps of z[1]...z[n12[[1]] ] and z[&ldquo;+1] ... z[total[n12]].
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_40.gif" alt="libPolys_40.gif" width="614" height="501" style="vertical-align:middle" />
+</p>
+
+<p class="Section">
+ Generic SCFT graph poly (steve)
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_41.gif" alt="libPolys_41.gif" width="1276" height="228" style="vertical-align:middle" />
+</p>
+
+<p class="Subsection">
+ M (3, 8) basis guess
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_42.gif" alt="libPolys_42.gif" width="1387" height="123" style="vertical-align:middle" />
+</p>
+
+<p class="Subsection">
+ M(3,p) specific
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_43.gif" alt="libPolys_43.gif" width="1155" height="60" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_44.gif" alt="libPolys_44.gif" width="1386" height="39" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libPolys_45.png" alt="libPolys_45.png" width="8" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/libPolys_46.png" alt="libPolys_46.png" width="8" height="17" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ NB: following wavefunctions for Moore-Read, Gaffnian must be symmetrized!
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_47.gif" alt="libPolys_47.gif" width="990" height="438" style="vertical-align:middle" />
+</p>
+
+<p class="Section">
+ Jack Polynomials -- INCORRECT; FIX
+</p>
+
+
+
+<p class="Section">
+ Entanglement stuff -- bipartitions/decomposition
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_48.gif" alt="libPolys_48.gif" width="363" height="417" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_49.png" alt="libPolys_49.png" width="411" height="228" style="vertical-align:middle" />
+</p>
+
+<p class="Section">
+ later
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_50.gif" alt="libPolys_50.gif" width="493" height="123" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_51.gif" alt="libPolys_51.gif" width="438" height="291" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_52.gif" alt="libPolys_52.gif" width="479" height="123" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ jsps are NON-symmetric cluster graph polynomial factors defined in thesis<br />hey guess what: mapping of p&rsquo;titions is WRONG -- doesn&rsquo;t give the full N=4 space coming from N=3.
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/libPolys_53.gif" alt="libPolys_53.gif" width="416" height="312" style="vertical-align:middle" />
+</p>
+
+
+
+
+<div style="font-family:Helvetica; font-size:11px; width:100%; border:1px none #999999; border-top-style:solid; padding-top:2px; margin-top:20px;">
+ <a href="http://www.wolfram.com/language/" style="color:#000; text-decoration:none;">
+  <span style="color:#555555">Created with the Wolfram Language</span> 
+ </a>
+</div>
+</body>
+
+</html>
